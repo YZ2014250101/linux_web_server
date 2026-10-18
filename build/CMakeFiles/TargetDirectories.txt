@@ -1,0 +1,5 @@
+/home/yjc/linux_code/me/build/CMakeFiles/edit_cache.dir
+/home/yjc/linux_code/me/build/CMakeFiles/rebuild_cache.dir
+/home/yjc/linux_code/me/build/base/test/CMakeFiles/me.dir
+/home/yjc/linux_code/me/build/base/test/CMakeFiles/edit_cache.dir
+/home/yjc/linux_code/me/build/base/test/CMakeFiles/rebuild_cache.dir

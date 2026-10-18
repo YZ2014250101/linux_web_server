@@ -1,0 +1,14 @@
+[
+{
+  "directory": "/home/yjc/linux_code/me/build/base/test",
+  "command": "/usr/bin/c++  -I/home/yjc/linux_code/me -g -o CMakeFiles/me.dir/testLog.cpp.o -c /home/yjc/linux_code/me/base/test/testLog.cpp",
+  "file": "/home/yjc/linux_code/me/base/test/testLog.cpp",
+  "output": "base/test/CMakeFiles/me.dir/testLog.cpp.o"
+},
+{
+  "directory": "/home/yjc/linux_code/me/build/base/test",
+  "command": "/usr/bin/c++  -I/home/yjc/linux_code/me -g -o CMakeFiles/me.dir/__/LogStream.cpp.o -c /home/yjc/linux_code/me/base/LogStream.cpp",
+  "file": "/home/yjc/linux_code/me/base/LogStream.cpp",
+  "output": "base/test/CMakeFiles/me.dir/__/LogStream.cpp.o"
+}
+]

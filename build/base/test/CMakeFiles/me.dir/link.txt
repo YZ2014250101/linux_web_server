@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/me.dir/testLog.cpp.o CMakeFiles/me.dir/__/LogStream.cpp.o -o me 
