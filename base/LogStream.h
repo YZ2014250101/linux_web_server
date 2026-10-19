@@ -1,84 +1,57 @@
 #pragma once
+#include "AsyncLogging.h"
 #include "LogLevel.h"
+#include "Timestamp.h"
 #include "noncopyable.h"
+#include <iostream>
 #include <string.h>
+using namespace std;
 namespace me {
-
-namespace detail {
-    const int kSmallBufferSize = 4096;
-    const int kLargeBufferSize = 4096 * 1024;
-
-    /**
-     * @brief 固定大小的格式化缓冲区模板类
-     * @tparam SIZE 缓冲区大小
-     */
-    template <int SIZE> class FormatBuffer {
-    public:
-        /**
-         * @brief 构造函数，初始化当前指针指向缓冲区起始位置
-         */
-        FormatBuffer()
-            : cur_(data_) { }
-        /**
-         * @brief 向缓冲区追加数据
-         * @param data 要追加的数据指针
-         * @param len 数据长度
-         */
-        void append(const char* data, size_t len) {
-            // 检查缓冲区剩余空间是否足够容纳要追加的数据
-            if (static_cast<size_t>(avail()) > len) {
-                // 复制数据到缓冲区当前位置
-                memcpy(cur_, data, len);
-                // 更新当前指针位置
-                cur_ += len;
-            }
-        }
-        /**
-         * @brief 获取缓冲区起始地址
-         * @return 缓冲区起始地址的常量指针
-         */
-        const char* data() const { return data_; }
-        /**
-         * @brief 获取缓冲区剩余可用空间
-         * @return 剩余可用空间的大小
-         */
-        int avail() const { return static_cast<int>(end() - cur_); }
-        char* current() { return cur_; }
-        void add(size_t len) { cur_ += len; }
-
-    private:
-        /**
-         * @brief 获取缓冲区结束位置
-         * @return 缓冲区结束位置的常量指针
-         */
-        const char* end() const { return data_ + SIZE; }
-        // 缓冲区数据存储数组
-        char data_[SIZE];
-        // 指向当前写入位置的指针
-        char* cur_;
-    };
-
-} // namesoace detail
 
 using OutputFunc = void (*)(const char*, int);
 static OutputFunc g_output = nullptr; // 全局输出函数指针，用于将日志数据写入目标输出
 
 class LogStream : noncopyable {
 public:
-// 析构函数，当LogStream对象被销毁时自动调用
+    LogStream() {
+        // 输入时间戳
+        *this << Timestamp::now().toFormattedString() << " ";
+    }
+    // 析构函数，当LogStream对象被销毁时自动调用
     ~LogStream() {
-    // 向流中添加一个换行符，确保每条日志记录独占一行
+        // 向流中添加一个换行符，确保每条日志记录独占一行
         *this << "\n";
-    // 调用全局输出函数g_output，将缓冲区中的日志数据写入目标输出
-    // 参数1：缓冲区数据的起始地址
-    // 参数2：缓冲区中已使用数据的长度（从起始地址到当前指针位置的字节数）
-        me::g_output(buffer_.data(), static_cast<int>(buffer_.current() - buffer_.data()));
-     }
+        cout << "LogStream::~LogStream()" << endl;
+        if (!g_output) {
+            g_output = asyncOutputCallback;
+        }
+        // 调用全局输出函数g_output，将缓冲区中的日志数据写入目标输出
+        // 参数1：缓冲区数据的起始地址
+        // 参数2：缓冲区中已使用数据的长度（从起始地址到当前指针位置的字节数）
+        g_output(buffer_.data(), static_cast<int>(buffer_.current() - buffer_.data()));
+    }
     typedef detail::FormatBuffer<detail::kSmallBufferSize> Buffer;
-    LogStream& operator<<(const me::LogLevel level);
-    LogStream& operator<<(const int num);
-    LogStream& operator<<(const char c) {
+    LogStream& operator<<(me::LogLevel level);
+    LogStream& operator<<(short num);
+    LogStream& operator<<(unsigned short num);
+    LogStream& operator<<(unsigned int num);
+    LogStream& operator<<(long num);
+    LogStream& operator<<(unsigned long num);
+    LogStream& operator<<(long long num);
+    LogStream& operator<<(unsigned long long num);
+    LogStream& operator<<(int num);
+    LogStream& operator<<(float num) {
+        *this << static_cast<double>(num);
+        return *this;
+    }
+    LogStream& operator<<(double num);
+    LogStream& operator<<(const void* p);
+    LogStream& operator<<(char c) {
         buffer_.append(&c, 1);
+        return *this;
+    }
+    LogStream& operator<<(const std::string& s) {
+        buffer_.append(s.data(), s.size());
         return *this;
     }
     /**
@@ -101,5 +74,9 @@ private:
     Buffer buffer_;
     static const int kMaxNumericSize = 48;
 };
+#define LOG_INFO me::LogStream() << LogLevel::INFO << " " << __FILE__ << ":" << __LINE__ << " " << __FUNCTION__ << " "
+#define LOG_WARN me::LogStream() << LogLevel::WARN << " " << __FILE__ << ":" << __LINE__ << " " << __FUNCTION__ << " "
+#define LOG_ERROR me::LogStream() << LogLevel::ERROR << " " << __FILE__ << ":" << __LINE__ << " " << __FUNCTION__ << " "
+#define LOG_FATAL me::LogStream() << LogLevel::FATAL << " " << __FILE__ << ":" << __LINE__ << " " << __FUNCTION__ << " "
 
 } // namespace me

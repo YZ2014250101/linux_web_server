@@ -1,1 +1,1 @@
-/usr/bin/c++ -g CMakeFiles/me.dir/testLog.cpp.o CMakeFiles/me.dir/__/LogStream.cpp.o -o me 
+/usr/bin/c++ -g CMakeFiles/me.dir/testLog.cpp.o CMakeFiles/me.dir/__/LogStream.cpp.o CMakeFiles/me.dir/__/AsyncLogging.cpp.o CMakeFiles/me.dir/__/Timestamp.cpp.o -o me 

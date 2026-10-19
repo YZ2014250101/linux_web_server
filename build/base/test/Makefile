@@ -130,6 +130,30 @@ me/fast:
 	cd /home/yjc/linux_code/me/build && $(MAKE) $(MAKESILENT) -f base/test/CMakeFiles/me.dir/build.make base/test/CMakeFiles/me.dir/build
 .PHONY : me/fast
 
+__/AsyncLogging.o: __/AsyncLogging.cpp.o
+.PHONY : __/AsyncLogging.o
+
+# target to build an object file
+__/AsyncLogging.cpp.o:
+	cd /home/yjc/linux_code/me/build && $(MAKE) $(MAKESILENT) -f base/test/CMakeFiles/me.dir/build.make base/test/CMakeFiles/me.dir/__/AsyncLogging.cpp.o
+.PHONY : __/AsyncLogging.cpp.o
+
+__/AsyncLogging.i: __/AsyncLogging.cpp.i
+.PHONY : __/AsyncLogging.i
+
+# target to preprocess a source file
+__/AsyncLogging.cpp.i:
+	cd /home/yjc/linux_code/me/build && $(MAKE) $(MAKESILENT) -f base/test/CMakeFiles/me.dir/build.make base/test/CMakeFiles/me.dir/__/AsyncLogging.cpp.i
+.PHONY : __/AsyncLogging.cpp.i
+
+__/AsyncLogging.s: __/AsyncLogging.cpp.s
+.PHONY : __/AsyncLogging.s
+
+# target to generate assembly for a file
+__/AsyncLogging.cpp.s:
+	cd /home/yjc/linux_code/me/build && $(MAKE) $(MAKESILENT) -f base/test/CMakeFiles/me.dir/build.make base/test/CMakeFiles/me.dir/__/AsyncLogging.cpp.s
+.PHONY : __/AsyncLogging.cpp.s
+
 __/LogStream.o: __/LogStream.cpp.o
 .PHONY : __/LogStream.o
 
@@ -153,6 +177,30 @@ __/LogStream.s: __/LogStream.cpp.s
 __/LogStream.cpp.s:
 	cd /home/yjc/linux_code/me/build && $(MAKE) $(MAKESILENT) -f base/test/CMakeFiles/me.dir/build.make base/test/CMakeFiles/me.dir/__/LogStream.cpp.s
 .PHONY : __/LogStream.cpp.s
+
+__/Timestamp.o: __/Timestamp.cpp.o
+.PHONY : __/Timestamp.o
+
+# target to build an object file
+__/Timestamp.cpp.o:
+	cd /home/yjc/linux_code/me/build && $(MAKE) $(MAKESILENT) -f base/test/CMakeFiles/me.dir/build.make base/test/CMakeFiles/me.dir/__/Timestamp.cpp.o
+.PHONY : __/Timestamp.cpp.o
+
+__/Timestamp.i: __/Timestamp.cpp.i
+.PHONY : __/Timestamp.i
+
+# target to preprocess a source file
+__/Timestamp.cpp.i:
+	cd /home/yjc/linux_code/me/build && $(MAKE) $(MAKESILENT) -f base/test/CMakeFiles/me.dir/build.make base/test/CMakeFiles/me.dir/__/Timestamp.cpp.i
+.PHONY : __/Timestamp.cpp.i
+
+__/Timestamp.s: __/Timestamp.cpp.s
+.PHONY : __/Timestamp.s
+
+# target to generate assembly for a file
+__/Timestamp.cpp.s:
+	cd /home/yjc/linux_code/me/build && $(MAKE) $(MAKESILENT) -f base/test/CMakeFiles/me.dir/build.make base/test/CMakeFiles/me.dir/__/Timestamp.cpp.s
+.PHONY : __/Timestamp.cpp.s
 
 testLog.o: testLog.cpp.o
 .PHONY : testLog.o
@@ -187,9 +235,15 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... me"
+	@echo "... __/AsyncLogging.o"
+	@echo "... __/AsyncLogging.i"
+	@echo "... __/AsyncLogging.s"
 	@echo "... __/LogStream.o"
 	@echo "... __/LogStream.i"
 	@echo "... __/LogStream.s"
+	@echo "... __/Timestamp.o"
+	@echo "... __/Timestamp.i"
+	@echo "... __/Timestamp.s"
 	@echo "... testLog.o"
 	@echo "... testLog.i"
 	@echo "... testLog.s"

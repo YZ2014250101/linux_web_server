@@ -8,7 +8,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/home/yjc/linux_code/me/base/AsyncLogging.cpp" "base/test/CMakeFiles/me.dir/__/AsyncLogging.cpp.o" "gcc" "base/test/CMakeFiles/me.dir/__/AsyncLogging.cpp.o.d"
   "/home/yjc/linux_code/me/base/LogStream.cpp" "base/test/CMakeFiles/me.dir/__/LogStream.cpp.o" "gcc" "base/test/CMakeFiles/me.dir/__/LogStream.cpp.o.d"
+  "/home/yjc/linux_code/me/base/Timestamp.cpp" "base/test/CMakeFiles/me.dir/__/Timestamp.cpp.o" "gcc" "base/test/CMakeFiles/me.dir/__/Timestamp.cpp.o.d"
   "/home/yjc/linux_code/me/base/test/testLog.cpp" "base/test/CMakeFiles/me.dir/testLog.cpp.o" "gcc" "base/test/CMakeFiles/me.dir/testLog.cpp.o.d"
   )
 

@@ -1,6 +1,10 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/me.dir/__/AsyncLogging.cpp.o"
+  "CMakeFiles/me.dir/__/AsyncLogging.cpp.o.d"
   "CMakeFiles/me.dir/__/LogStream.cpp.o"
   "CMakeFiles/me.dir/__/LogStream.cpp.o.d"
+  "CMakeFiles/me.dir/__/Timestamp.cpp.o"
+  "CMakeFiles/me.dir/__/Timestamp.cpp.o.d"
   "CMakeFiles/me.dir/testLog.cpp.o"
   "CMakeFiles/me.dir/testLog.cpp.o.d"
   "me"
